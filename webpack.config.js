@@ -10,7 +10,8 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -33,5 +34,6 @@ module.exports = {
       title: 'Output Management'
     }),
     new ManifestPlugin()
-  ]
+  ],
+  devtool: 'inline-source-map',
 };
