@@ -1,0 +1,18 @@
+{
+  "name": "YxY-starter-kit",
+  "version": "0.0.1",
+  "description": "starter kit",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": "https://github.com/ZhangYxY/YxY-starter-kit.git",
+  "author": "ZhangYxY",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
