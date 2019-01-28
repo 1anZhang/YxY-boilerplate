@@ -6,7 +6,6 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 module.exports = {
   entry: {
     app: './src/index.js',
-    print: './src/print.js'
   },
   output: {
     filename: '[name].[hash].js',
@@ -33,7 +32,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Output Management'
     }),
-    new ManifestPlugin()
+    new ManifestPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  }
 };
