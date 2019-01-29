@@ -1,34 +1,67 @@
-import _ from 'lodash';
-import './style.css';
-import YaYa from './avatar.jpg';
-import printMe from './print.js';
 
-function component() {
-  let element = document.createElement('div');
-  element.innerHTML = _.join(['hello', 'YxY', '!'], ' ');
-  element.classList.add('hello');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Avatar from './avatar.jpg'
 
-  let myPic = new Image();
-  myPic.src = YaYa;
-  element.appendChild(myPic);
+import './myStyle.scss';
 
-  let btn = document.createElement('button');
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-  element.appendChild(btn);
+class App extends React.Component {
+  state = {
+    CaptainKirkBio: {},
+    Foo: null,
+  };
 
-  return element;
+  componentDidMount() {
+    this.onGetKirkBio();
+    import(/* webpackChunkName: 'Foo' */ './components/Foo').then(Foo => {
+      this.setState({
+        Foo: Foo.default
+      });
+    });
+  }
+
+  onGetKirkBio = async () => {
+    try {
+      const result = await fetch('http://stapi.co/api/v1/rest/character/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: {
+          title: 'James T. Kirk',
+          name: 'James T. Kirk',
+        },
+      });
+      const resultJSON = await result.json();
+      const character = resultJSON.characters[0];
+      this.setState({ CaptainKirkBio: character });
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  render() {
+    const { CaptainKirkBio, Foo } = this.state;
+    return (
+      <div className="app">
+        <img src={Avatar} />
+        <p>
+          We are a most promising species, Mr. Spock, as predators go. Did you know that? I
+          frequently have my doubts. I dont. Not any more. And maybe in a thousand years or so, we
+          will be able to prove it.
+        </p>
+        <p>- Captain Kirk</p>
+        <section>
+          {Object.values(CaptainKirkBio).length === 0 ? (
+            <p>Loading User Information</p>
+          ) : (
+            <p style={{ wordBreak: 'break-all' }}>{JSON.stringify(CaptainKirkBio)}</p>
+          )}
+        </section>
+        { Foo ? <Foo /> : <p>Foo is loading</p> }
+      </div>
+    );
+  }
 }
 
-// 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
-let element = component(); 
-document.body.appendChild(element);
-
-if (module.hot) {
-  module.hot.accept('./print.js', function() {
-    console.log('Accepting the updated printMe module!');
-    document.body.removeChild(element);
-    element = component(); // 重新渲染页面后，component 更新 click 事件处理
-    document.body.appendChild(element);
-  })
-}
+ReactDOM.render(<App />, document.getElementById('app'));

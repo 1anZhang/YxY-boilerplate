@@ -1,12 +1,28 @@
-const ManifestPlugin = require('webpack-manifest-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const Visualizer = require('webpack-visualizer-plugin');
 const common = require('./webpack.common.js');
 module.exports = merge(common, {
+  module: {
+    rules: [
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+    ]
+  },
   plugins: [
-    new ManifestPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+    new Visualizer({ filename: './statistics.html' })
   ],
+  
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',

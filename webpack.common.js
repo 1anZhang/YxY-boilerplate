@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const APP_DIR = path.resolve(__dirname, '../src'); // <===== new stuff added here
 
 module.exports = {
   entry: {
+    polyfill: '@babel/polyfill',
     app: './src/index.js',
   },
   output: {
@@ -14,11 +16,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -27,9 +29,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Output Management'
+      title: 'YxY',
+      template: './public/index.html'
     }),
   ],
   optimization: {
