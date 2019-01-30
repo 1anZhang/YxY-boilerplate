@@ -2,46 +2,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Avatar from './avatar.jpg'
+import Button from './components/Button'
 
-import './myStyle.scss';
+import './style.less';
 
 class App extends React.Component {
-  state = {
-    CaptainKirkBio: {},
-    Foo: null,
-  };
-
-  componentDidMount() {
-    this.onGetKirkBio();
-    import(/* webpackChunkName: 'Foo' */ './components/Foo').then(Foo => {
-      this.setState({
-        Foo: Foo.default
-      });
-    });
-  }
-
-  onGetKirkBio = async () => {
-    try {
-      const result = await fetch('http://stapi.co/api/v1/rest/character/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: {
-          title: 'James T. Kirk',
-          name: 'James T. Kirk',
-        },
-      });
-      const resultJSON = await result.json();
-      const character = resultJSON.characters[0];
-      this.setState({ CaptainKirkBio: character });
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
 
   render() {
-    const { CaptainKirkBio, Foo } = this.state;
     return (
       <div className="app">
         <img src={Avatar} />
@@ -51,14 +18,7 @@ class App extends React.Component {
           will be able to prove it.
         </p>
         <p>- Captain Kirk</p>
-        <section>
-          {Object.values(CaptainKirkBio).length === 0 ? (
-            <p>Loading User Information</p>
-          ) : (
-            <p style={{ wordBreak: 'break-all' }}>{JSON.stringify(CaptainKirkBio)}</p>
-          )}
-        </section>
-        { Foo ? <Foo /> : <p>Foo is loading</p> }
+        <Button>YxY</Button>
       </div>
     );
   }
