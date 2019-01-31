@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
-const APP_DIR = path.resolve(__dirname, '../src'); // <===== new stuff added here
+// const APP_DIR = path.resolve(__dirname, '../src');
 
 module.exports = {
   entry: {
@@ -29,6 +31,13 @@ module.exports = {
     ]
   },
   plugins: [
+    new ProgressBarPlugin({
+      format: `build【${chalk.green(':bar')}】${chalk.blue.bold(':percent')} ${chalk.yellow.bold(
+        ':elapsed seconds'
+      )}`,
+      clear: true,
+      width: 40
+    }),
     new HtmlWebpackPlugin({
       title: 'YxY',
       template: './public/index.html'
