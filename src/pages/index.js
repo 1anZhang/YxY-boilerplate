@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Avatar from '../avatar.jpg';
 import Button from '../components/Button';
-import { add, minus } from '../actions';
+// import { add, minus } from '../actions';
 import '../style.less';
 
 const DynamicButton = lazy(() => import('../components/Button'));
@@ -19,9 +19,9 @@ const App = ({ count, onAdd, onMinus }) => {
       </p>
       <p> -Captain Kirk </p>
       <p>{`当前计数器：${count}`}</p>
-      <Button onClick={onAdd}> ➕ </Button>
+      <Button onClick={onAdd}> +1 </Button>
       <Suspense fallback={<div> loading... </div>}>
-        <DynamicButton onClick={onMinus}> ➖ </DynamicButton>
+        <DynamicButton onClick={onMinus}> +1 </DynamicButton>
       </Suspense>
     </div>
   );
@@ -42,10 +42,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAdd: () => {
-      dispatch(add());
+      dispatch({ type: 'ADD_ASYNC' });
     },
     onMinus: () => {
-      dispatch(minus());
+      dispatch({ type: 'MINUS_ASYNC' });
     }
   };
 };
