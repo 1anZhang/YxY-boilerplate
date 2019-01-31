@@ -1,11 +1,10 @@
-import React, { lazy, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import Avatar from './avatar.jpg'
-import Button from './components/Button'
+import React, { lazy, Suspense } from 'react';
+import ReactDOM from 'react-dom';
+import Avatar from './avatar.jpg';
+import Button from './components/Button';
+import './style.less';
 
-const DynamicButton = lazy(() => import('./components/Button'))
-
-import './style.less'
+const DynamicButton = lazy(() => import('./components/Button'));
 
 class App extends React.Component {
   componentDidMount() {}
@@ -25,8 +24,8 @@ class App extends React.Component {
           <DynamicButton>DynamicYxY</DynamicButton>
         </Suspense>
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'));

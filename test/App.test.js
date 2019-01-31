@@ -7,5 +7,5 @@ describe('App', () => {
     const warpper = shallow(<App />);
     expect(warpper.find('p').text()).toBe('test component');
     expect(warpper).toMatchSnapshot;
-  })
-})
+  });
+});

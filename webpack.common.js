@@ -6,7 +6,7 @@ const APP_DIR = path.resolve(__dirname, '../src'); // <===== new stuff added her
 module.exports = {
   entry: {
     polyfill: '@babel/polyfill',
-    app: './src/index.js',
+    app: './src/index.js'
   },
   output: {
     filename: '[name].[hash].js',
@@ -32,7 +32,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'YxY',
       template: './public/index.html'
-    }),
+    })
   ],
   optimization: {
     splitChunks: {

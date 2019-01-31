@@ -2,17 +2,14 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Visualizer = require('webpack-visualizer-plugin');
 const common = require('./webpack.common.js');
+
 module.exports = merge(common, {
   module: {
     rules: [
       {
         test: /\.(css|less)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
-      },
+        use: ['style-loader', 'css-loader', 'less-loader']
+      }
     ]
   },
   plugins: [
@@ -22,11 +19,11 @@ module.exports = merge(common, {
     }),
     new Visualizer({ filename: './statistics.html' })
   ],
-  
+
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
     hot: true
   },
-  mode: "development"
+  mode: 'development'
 });
