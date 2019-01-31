@@ -32,14 +32,16 @@ class Button extends React.PureComponent {
   render() {
     const { prefixCls, children, onClick } = this.props;
     return (
-      <div
+      <button
+        type='button'
         className={cls(prefixCls)}
         onClick={onClick}
+        onKeyDown={() => {}}
         onMouseMove={this.handleMouseMove}
         ref={this.buttonRef}
       >
         <span>{children}</span>
-      </div>
+      </button>
     );
   }
 }

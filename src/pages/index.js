@@ -21,7 +21,7 @@ const App = ({ count, onAdd, onMinus }) => {
       <p>{`当前计数器：${count}`}</p>
       <Button onClick={onAdd}> +1 </Button>
       <Suspense fallback={<div> loading... </div>}>
-        <DynamicButton onClick={onMinus}> +1 </DynamicButton>
+        <DynamicButton onClick={onMinus}> -1 </DynamicButton>
       </Suspense>
     </div>
   );
