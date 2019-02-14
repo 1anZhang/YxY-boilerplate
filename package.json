@@ -7,11 +7,15 @@
     "build": "webpack --config webpack.prod.js",
     "server": "node server",
     "test": "jest ./test",
-    "lint": "eslint src",
-    "precommit": "lint-staged"
+    "lint": "eslint src"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test/enzyme.setup.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css,md}": [
