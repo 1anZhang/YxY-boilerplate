@@ -1,9 +1,14 @@
 import React from 'react';
+import ParallaxView from '../../components/ParallaxView';
+
+import './styles/index.less';
 
 const PageOne = () => {
   return (
     <div className='p-one'>
-      <h1>Page One</h1>
+      <section className='content'>
+        <ParallaxView />
+      </section>
     </div>
   );
 };

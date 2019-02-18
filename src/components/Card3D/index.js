@@ -14,7 +14,7 @@ const Card3D = ({ imgSrc }) => {
   }));
   return (
     <animated.div
-      className='card'
+      className='com-card-3d'
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: springProps.xys.interpolate(trans) }}
