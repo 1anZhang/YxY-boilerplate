@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const merge = require('webpack-merge');
 const Visualizer = require('webpack-visualizer-plugin');
 const common = require('./webpack.common.js');
@@ -22,8 +23,9 @@ module.exports = merge(common, {
 
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
-    hot: true
+    contentBase: path.join(__dirname, 'dist'),
+    hot: true,
+    noInfo: true
   },
   mode: 'development'
 });

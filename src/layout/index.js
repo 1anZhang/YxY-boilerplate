@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Index from '../pages/index';
-import pageOne from '../pages/pageOne';
-import pageTwo from '../pages/pageTwo';
-import pageThree from '../pages/pageThree';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import Index from 'pages/index';
+import pageOne from 'pages/pageOne';
+import pageTwo from 'pages/pageTwo';
+import pageThree from 'pages/pageThree';
 
-import './styles/normalize.less';
-import './styles/style.less';
+import './styles/normalize';
+import './styles/style';
 
 const Layout = () => {
   return (

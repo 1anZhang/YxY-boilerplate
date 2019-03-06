@@ -21,8 +21,7 @@ module.exports = merge(common, {
     new ManifestPlugin(),
     new UglifyJSPlugin({
       cache: true,
-      parallel: true,
-      sourceMap: true // set to true if you want JS source maps
+      parallel: true
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
@@ -30,6 +29,5 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin(),
     new OptimizeCssAssetsPlugin()
   ],
-  devtool: 'source-map',
   mode: 'production'
 });

@@ -1,18 +1,35 @@
 {
-    "env": {
-        "browser": true,
-        "jest": true
-    },
-    "extends": ["airbnb", "plugin:prettier/recommended"],
-    "parser": "babel-eslint",
-    "rules": {
-        "class-methods-use-this": 0,
-        "import/no-named-as-default": 0,
-        "react/jsx-filename-extension": [
-            "error",
-            {
-                "extensions": [".js", ".jsx"]
-            }
-        ]
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "rules": {
+    "class-methods-use-this": 0,
+    "import/no-named-as-default": 0,
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["src", "./src"],
+          ["actions", "./src/actions"],
+          ["images", "./src/images"],
+          ["containers", "./src/containers"],
+          ["reducers", "./src/reducers"],
+          ["sagas", "./src/sagas"],
+          ["pages", "./src/pages"],
+          ["components", "./src/components"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json", ".less", "jpg", "png", "svg"]
+      }
     }
+  }
 }

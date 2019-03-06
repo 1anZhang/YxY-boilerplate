@@ -1,13 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Avatar from '../../images/avatar.jpg';
-import Button from '../../components/Button';
-import Card3D from '../../components/Card3D';
+import Avatar from 'images/avatar.jpg';
+import Button from 'components/Button';
+import Card3D from 'components/Card3D';
 
-import './styles/index.less';
+import './styles/index';
 
-const DynamicButton = lazy(() => import('../../components/Button'));
+const DynamicButton = lazy(() => import('components/Button'));
 
 const App = ({ count, onAdd, onMinus }) => {
   return (

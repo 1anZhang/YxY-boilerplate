@@ -1,5 +1,5 @@
 import React from 'react';
-import ParallaxView from '../../components/ParallaxView';
+import ParallaxView from 'components/ParallaxView';
 
 import './styles/index.less';
 

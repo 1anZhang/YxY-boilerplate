@@ -8,7 +8,7 @@ const chalk = require('chalk');
 module.exports = {
   entry: {
     polyfill: '@babel/polyfill',
-    app: './src/index.js'
+    app: './src/index'
   },
   output: {
     filename: '[name].[hash].js',
@@ -29,6 +29,20 @@ module.exports = {
         loader: 'file-loader'
       }
     ]
+  },
+  resolve: {
+    modules: ['node_modules', path.resolve(__dirname, 'src')],
+    extensions: ['.js', '.json', '.jsx', '.less', 'jpg', 'png', 'svg'],
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+      actions: path.resolve(__dirname, 'src/actions'),
+      images: path.resolve(__dirname, 'src/images'),
+      containers: path.resolve(__dirname, 'src/containers'),
+      reducers: path.resolve(__dirname, 'src/reducers'),
+      sagas: path.resolve(__dirname, 'src/sagas'),
+      pages: path.resolve(__dirname, 'src/pages'),
+      components: path.resolve(__dirname, 'src/components')
+    }
   },
   plugins: [
     new ProgressBarPlugin({
