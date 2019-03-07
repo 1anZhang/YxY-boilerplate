@@ -56,10 +56,5 @@ module.exports = {
       title: 'YxY',
       template: './public/index.html'
     })
-  ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  }
+  ]
 };
