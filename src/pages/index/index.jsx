@@ -9,7 +9,7 @@ import './styles/index';
 
 const DynamicButton = lazy(() => import('components/Button'));
 
-const App = ({ count, onAdd, onMinus }) => {
+const App = ({ count, addByOne, addByOneAsync, minusByOne }) => {
   return (
     <div className='p-index'>
       <div className='pic-duck'>
@@ -18,9 +18,10 @@ const App = ({ count, onAdd, onMinus }) => {
       <div className='counter'>
         <p>{`${count} 鸭饮酒醉`}</p>
         <div>
-          <Button onClick={onAdd}> +1 </Button>
+          <Button onClick={addByOne}> +1 </Button>
+          <Button onClick={addByOneAsync}> +1 async</Button>
           <Suspense fallback={<div> loading... </div>}>
-            <DynamicButton onClick={onMinus}> -1 </DynamicButton>
+            <DynamicButton onClick={minusByOne}> -1 </DynamicButton>
           </Suspense>
         </div>
       </div>
@@ -30,28 +31,22 @@ const App = ({ count, onAdd, onMinus }) => {
 
 App.propTypes = {
   count: PropTypes.number.isRequired,
-  onAdd: PropTypes.func.isRequired,
-  onMinus: PropTypes.func.isRequired
+  addByOne: PropTypes.func.isRequired,
+  minusByOne: PropTypes.func.isRequired,
+  addByOneAsync: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
-  return {
-    count: state.count
-  };
-};
+const mapState = state => ({
+  count: state.count
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAdd: () => {
-      dispatch({ type: 'ADD_ASYNC' });
-    },
-    onMinus: () => {
-      dispatch({ type: 'MINUS_ASYNC' });
-    }
-  };
-};
+const mapDispatch = ({ count: { addBy, addByAsync } }) => ({
+  addByOne: () => addBy(1),
+  minusByOne: () => addBy(-1),
+  addByOneAsync: () => addByAsync(1)
+});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapState,
+  mapDispatch
 )(App);
