@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
-const Visualizer = require('webpack-visualizer-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -13,10 +12,7 @@ module.exports = merge(common, {
       }
     ]
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new Visualizer({ filename: './statistics.html' })
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 
   // devServer可以配置自定义响应头，lazy加载模式，模拟history多页后端请求
   devServer: {

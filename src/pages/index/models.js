@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
 // count model

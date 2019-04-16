@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cls from 'classname';
+import cls from 'classnames';
 import './style/index.less';
 
 class Button extends React.PureComponent {

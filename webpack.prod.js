@@ -1,7 +1,8 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -31,6 +32,7 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new ManifestPlugin(),
+    new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin(),
     new OptimizeCssAssetsPlugin()
   ],
